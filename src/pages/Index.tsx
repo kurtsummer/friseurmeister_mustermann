@@ -12,7 +12,18 @@ import { Button } from "../components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
 export default function Index() {
-  const [prompts, setPrompts] = useState<Prompt[]>(mockPrompts);
+  const [prompts, setPrompts] = useState<Prompt[]>(() => {
+    const saved = localStorage.getItem("prompt_db_content");
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return mockPrompts;
+      }
+    }
+    return mockPrompts;
+  });
+
   const [filters, setFilters] = useState({
     search: "",
     mediaType: "",
@@ -20,6 +31,11 @@ export default function Index() {
     filmStock: "",
     perspective: "",
   });
+
+  // Save to local storage whenever prompts change
+  useMemo(() => {
+    localStorage.setItem("prompt_db_content", JSON.stringify(prompts));
+  }, [prompts]);
 
   const filteredPrompts = useMemo(() => {
     return prompts.filter((p) => {
