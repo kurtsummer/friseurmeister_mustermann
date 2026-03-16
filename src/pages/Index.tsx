@@ -4,8 +4,10 @@ import { PromptCard } from "../components/PromptCard";
 import { PromptFilters } from "../components/PromptFilters";
 import { AddPromptModal } from "../components/AddPromptModal";
 import { PromptGenerator } from "../components/PromptGenerator";
+import { ThemeToggle } from "../components/ThemeToggle";
 import { Prompt } from "../types/prompt";
 import { Sparkles, Database, LayoutGrid, Wand2, Palette } from "lucide-react";
+
 import { Button } from "../components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
@@ -67,10 +69,12 @@ export default function Index() {
               <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">AI Creative Studio</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+             <ThemeToggle />
              <AddPromptModal onAdd={handleAddPrompt} />
           </div>
         </div>
+
       </header>
 
       <main className="container mx-auto px-4 py-12 relative">
