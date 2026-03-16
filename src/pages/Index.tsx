@@ -77,8 +77,9 @@ export default function Index() {
         <div className="max-w-4xl mx-auto mb-16 text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-zinc-900 shadow-sm border border-primary/10 text-sm font-medium animate-bounce-subtle">
             <Palette className="w-4 h-4 text-primary" />
-            <span className="text-primary">Farbenfrohes Design Aktiviert</span>
+            <span className="text-primary">Frisches Grün-Design Aktiviert</span>
           </div>
+
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight">
             Gestalte die <span className="text-primary italic">Zukunft</span> deiner <span className="text-secondary">Bilder</span>
           </h2>

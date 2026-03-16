@@ -32,7 +32,8 @@ export function PromptCard({ prompt }: PromptCardProps) {
   };
 
   return (
-    <Card className="group relative overflow-hidden border-none transition-all duration-500 hover:shadow-[0_20px_50px_rgba(99,102,241,0.2)] hover:-translate-y-2 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md rounded-[2rem]">
+    <Card className="group relative overflow-hidden border-none transition-all duration-500 hover:shadow-[0_20px_50px_rgba(16,185,129,0.2)] hover:-translate-y-2 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md rounded-[2rem]">
+
       {/* Decorative gradient background on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       

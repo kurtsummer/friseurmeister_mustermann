@@ -118,7 +118,8 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
   const moods: Mood[] = ["Nostalgisch", "Futuristisch", "Raw/Authentisch", "Ätherisch", "Traumhaft", "Professionell", "Dunkel", "Lebhaft"];
 
   return (
-    <Card className="border-none shadow-[0_30px_100px_rgba(99,102,241,0.15)] bg-white/80 dark:bg-zinc-950/80 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden relative">
+    <Card className="border-none shadow-[0_30px_100px_rgba(16,185,129,0.15)] bg-white/80 dark:bg-zinc-950/80 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden relative">
+
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-secondary to-accent" />
       <CardHeader className="pt-10">
         <div className="flex items-center gap-3 mb-2">
@@ -167,7 +168,7 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
         </div>
 
         <div className="pt-6">
-          <Button onClick={generatePrompt} className="w-full h-16 text-xl font-black gap-3 shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:shadow-primary/40 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98]">
+          <Button onClick={generatePrompt} className="w-full h-16 text-xl font-black gap-3 shadow-[0_20px_40px_rgba(16,185,129,0.3)] hover:shadow-primary/40 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98]">
             <Sparkles className="w-6 h-6 animate-pulse" /> PROMPT GENERIEREN
           </Button>
         </div>
