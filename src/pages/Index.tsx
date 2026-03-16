@@ -3,9 +3,11 @@ import { mockPrompts } from "../data/mockData";
 import { PromptCard } from "../components/PromptCard";
 import { PromptFilters } from "../components/PromptFilters";
 import { AddPromptModal } from "../components/AddPromptModal";
+import { PromptGenerator } from "../components/PromptGenerator";
 import { Prompt } from "../types/prompt";
-import { Sparkles, Database } from "lucide-react";
+import { Sparkles, Database, LayoutGrid, Wand2 } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
 export default function Index() {
 
@@ -69,41 +71,59 @@ export default function Index() {
         <div className="max-w-4xl mx-auto mb-16 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary border border-primary/10 text-sm font-medium">
             <Sparkles className="w-4 h-4" />
-            <span>Kreative Prompt-Datenbank</span>
+            <span>Kreatives Prompt-Werkzeug</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-            Perfekte Prompts für <span className="text-primary">Bilder & Videos</span>
+            Vom Konzept zum <span className="text-primary">perfekten Prompt</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Finde und erstelle hochwertige Prompts mit spezifischen Kameraeinstellungen, 
-            Film-Looks und Perspektiven für Midjourney, Runway, Stable Diffusion und mehr.
+            Wähle deine Kamera, den Film-Look und die Perspektive. Beschreibe deine Szene und lass den Generator den Rest erledigen.
           </p>
         </div>
 
-        <PromptFilters 
-          filters={filters} 
-          setFilters={setFilters} 
-          onReset={handleResetFilters} 
-        />
-
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider">
-            {filteredPrompts.length} Ergebnisse gefunden
-          </h3>
-        </div>
-
-        {filteredPrompts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPrompts.map((prompt) => (
-              <PromptCard key={prompt.id} prompt={prompt} />
-            ))}
+        <Tabs defaultValue="generator" className="space-y-12">
+          <div className="flex justify-center">
+            <TabsList className="h-14 p-1 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border-2">
+              <TabsTrigger value="generator" className="rounded-xl px-8 flex items-center gap-2 data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:shadow-sm">
+                <Wand2 className="w-4 h-4" /> Generator
+              </TabsTrigger>
+              <TabsTrigger value="database" className="rounded-xl px-8 flex items-center gap-2 data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:shadow-sm">
+                <LayoutGrid className="w-4 h-4" /> Datenbank
+              </TabsTrigger>
+            </TabsList>
           </div>
-        ) : (
-          <div className="py-20 text-center border-2 border-dashed rounded-3xl bg-zinc-50 dark:bg-zinc-900/20">
-            <p className="text-zinc-500 font-medium">Keine Prompts gefunden, die deinen Filtern entsprechen.</p>
-            <Button variant="link" onClick={handleResetFilters} className="mt-2">Filter aufheben</Button>
-          </div>
-        )}
+
+          <TabsContent value="generator" className="max-w-4xl mx-auto focus-visible:outline-none">
+            <PromptGenerator onSave={handleAddPrompt} />
+          </TabsContent>
+
+          <TabsContent value="database" className="space-y-8 focus-visible:outline-none">
+            <PromptFilters
+              filters={filters}
+              setFilters={setFilters}
+              onReset={handleResetFilters}
+            />
+
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider">
+                {filteredPrompts.length} gespeicherte Prompts
+              </h3>
+            </div>
+
+            {filteredPrompts.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredPrompts.map((prompt) => (
+                  <PromptCard key={prompt.id} prompt={prompt} />
+                ))}
+              </div>
+            ) : (
+              <div className="py-20 text-center border-2 border-dashed rounded-3xl bg-zinc-50 dark:bg-zinc-900/20">
+                <p className="text-zinc-500 font-medium">Keine Prompts gefunden.</p>
+                <Button variant="link" onClick={handleResetFilters} className="mt-2">Filter aufheben</Button>
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
       </main>
 
       <footer className="border-t py-12 mt-20 bg-white dark:bg-zinc-950">
