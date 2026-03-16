@@ -61,12 +61,19 @@ export default function Index() {
       <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-xl">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-gradient-to-br from-primary to-secondary rounded-2xl shadow-lg shadow-primary/20">
-              <Database className="w-6 h-6 text-white" />
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative p-1 bg-white dark:bg-zinc-900 rounded-xl shadow-lg border border-primary/10 overflow-hidden">
+                <img
+                  src="/logo.png"
+                  alt="PromptDB Logo"
+                  className="w-10 h-10 object-contain dark:invert transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
             </div>
             <div>
               <h1 className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">PromptDB</h1>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">AI Creative Studio</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">KI Creative Studio</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -74,7 +81,6 @@ export default function Index() {
              <AddPromptModal onAdd={handleAddPrompt} />
           </div>
         </div>
-
       </header>
 
       <main className="container mx-auto px-4 py-12 relative">
