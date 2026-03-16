@@ -6,9 +6,10 @@ import { AddPromptModal } from "../components/AddPromptModal";
 import { PromptGenerator } from "../components/PromptGenerator";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Prompt } from "../types/prompt";
-import { Sparkles, Database, LayoutGrid, Wand2, Heart } from "lucide-react";
-
+import { Sparkles, Database, LayoutGrid, Wand2, Heart, Download, Upload } from "lucide-react";
+import { toast } from "../hooks/use-toast";
 import { Button } from "../components/ui/button";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
 export default function Index() {
@@ -67,6 +68,41 @@ export default function Index() {
     setFilters(prev => ({ ...prev, search: tag }));
     // Smooth scroll to search filters if needed, but the search is reactive
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleExport = () => {
+    const dataStr = JSON.stringify(prompts, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    
+    const exportFileDefaultName = `promptdb_backup_${new Date().toISOString().split('T')[0]}.json`;
+    
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+    
+    toast({ title: "Export erfolgreich", description: "Deine Datenbank wurde als JSON gespeichert." });
+  };
+
+  const handleImport = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const json = JSON.parse(e.target?.result as string);
+        if (Array.isArray(json)) {
+          setPrompts(json);
+          toast({ title: "Import erfolgreich", description: `${json.length} Prompts wurden geladen.` });
+        } else {
+          throw new Error("Ungültiges Dateiformat");
+        }
+      } catch (err) {
+        toast({ title: "Fehler beim Import", description: "Die Datei konnte nicht gelesen werden.", variant: "destructive" });
+      }
+    };
+    reader.readAsText(file);
   };
 
   const handleResetFilters = () => {
@@ -160,19 +196,49 @@ export default function Index() {
               />
             </div>
 
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
               <h3 className="text-sm font-bold text-primary uppercase tracking-widest flex items-center gap-2">
                 <div className="w-8 h-1 bg-primary rounded-full" />
                 {filteredPrompts.length} Gespeicherte Werke
               </h3>
-              <Button 
-                variant={filters.onlyFavorites ? "secondary" : "ghost"} 
-                onClick={() => setFilters({ ...filters, onlyFavorites: !filters.onlyFavorites })}
-                className="rounded-xl gap-2 font-bold"
-              >
-                <Heart className={`w-4 h-4 ${filters.onlyFavorites ? 'fill-current' : ''}`} />
-                {filters.onlyFavorites ? "Nur Favoriten" : "Alle anzeigen"}
-              </Button>
+              
+              <div className="flex flex-wrap items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleExport}
+                  className="rounded-xl gap-2 font-bold border-primary/20 hover:bg-primary/5"
+                >
+                  <Download className="w-4 h-4" /> Backup
+                </Button>
+                
+                <div className="relative">
+                  <input
+                    type="file"
+                    accept=".json"
+                    onChange={handleImport}
+                    className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
+                    title="Backup hochladen"
+                  />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-xl gap-2 font-bold border-primary/20 hover:bg-primary/5"
+                  >
+                    <Upload className="w-4 h-4" /> Import
+                  </Button>
+                </div>
+
+                <Button
+                  variant={filters.onlyFavorites ? "secondary" : "ghost"}
+                  size="sm"
+                  onClick={() => setFilters({ ...filters, onlyFavorites: !filters.onlyFavorites })}
+                  className="rounded-xl gap-2 font-bold"
+                >
+                  <Heart className={`w-4 h-4 ${filters.onlyFavorites ? 'fill-current' : ''}`} />
+                  {filters.onlyFavorites ? "Nur Favoriten" : "Favoriten"}
+                </Button>
+              </div>
             </div>
 
             {filteredPrompts.length > 0 ? (
