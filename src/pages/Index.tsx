@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/Hero";
+import { TrustBar } from "@/components/TrustBar";
 import { Sparkles, Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -55,6 +56,7 @@ const Index = () => {
 
       <main>
         <Hero />
+        <TrustBar />
 
         {/* Placeholder for subsequent blocks */}
         <section id="leistungen" className="py-24 bg-white">
