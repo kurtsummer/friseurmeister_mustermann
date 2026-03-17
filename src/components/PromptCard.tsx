@@ -19,10 +19,12 @@ interface PromptCardProps {
   onEdit?: (prompt: Prompt) => void;
   onDelete?: (id: string) => void;
   onImageUpload?: (id: string, base64: string) => void;
+  onImageRemove?: (id: string) => void;
 }
 
-export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDelete, onImageUpload }: PromptCardProps) {
+export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDelete, onImageUpload, onImageRemove }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,8 +120,17 @@ export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDel
                 >
                   <ImageIcon className="w-4 h-4 text-emerald-500" /> Bild hochladen
                 </DropdownMenuItem>
+                {prompt.imageUrl && (
+                  <DropdownMenuItem
+                    onClick={() => onImageRemove?.(prompt.id)}
+                    className="rounded-xl gap-2 font-bold text-orange-500 focus:text-orange-500 cursor-pointer"
+                  >
+                    <Trash2 className="w-4 h-4" /> Bild entfernen
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem
                   onClick={() => onDelete?.(prompt.id)}
+
                   className="rounded-xl gap-2 font-bold text-red-500 focus:text-red-500 cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" /> Löschen

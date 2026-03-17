@@ -84,6 +84,11 @@ export default function Index() {
     setPrompts(prev => prev.map(p => p.id === id ? { ...p, imageUrl: base64 } : p));
   };
 
+  const handleImageRemove = (id: string) => {
+    setPrompts(prev => prev.map(p => p.id === id ? { ...p, imageUrl: undefined } : p));
+    toast({ title: "Bild entfernt", description: "Die Bildvorschau wurde gelöscht." });
+  };
+
   const handleTagClick = (tag: string) => {
 
     setFilters(prev => ({ ...prev, search: tag }));
@@ -273,7 +278,9 @@ export default function Index() {
                     onEdit={setEditingPrompt}
                     onDelete={handleDeletePrompt}
                     onImageUpload={handleImageUpload}
+                    onImageRemove={handleImageRemove}
                   />
+
                 ))}
 
               </div>
