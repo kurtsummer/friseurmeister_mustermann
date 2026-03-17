@@ -33,6 +33,7 @@ interface Meal {
   time: string;
   ingredients: string[];
   instructions: string[];
+  imageUrl: string;
 }
 
 interface DayPlan {
@@ -65,15 +66,30 @@ const Plan = () => {
           name: "Hähnchen-Reis-Pfanne", 
           calories: 650, 
           time: "25 Min", 
-          ingredients: ["150g Hähnchenbrust", "80g Reis (ungekocht)", "150g Brokkoli", "1 EL Sojasauce", "1 TL Öl"],
-          instructions: ["Reis nach Packungsanweisung kochen.", "Hähnchen in Würfel schneiden und in Öl goldbraun braten.", "Brokkoli kurz mitdünsten.", "Mit Sojasauce ablöschen und alles vermengen."]
+          imageUrl: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["150g Hähnchenbrust", "80g Reis (ungekocht)", "150g Brokkoli", "1 EL Sojasauce", "1 TL Öl", "Frischer Ingwer", "1 Frühlingszwiebel"],
+          instructions: [
+            "Den Reis in einem Sieb gründlich waschen, bis das Wasser klar bleibt. Dann nach Packungsanweisung in leicht gesalzenem Wasser gar kochen.",
+            "Während der Reis kocht, die Hähnchenbrust unter kaltem Wasser abspülen, trocken tupfen und in etwa 2 cm große Würfel schneiden.",
+            "Den Brokkoli in kleine Röschen teilen. Den Ingwer fein reiben und die Frühlingszwiebel in feine Ringe schneiden.",
+            "In einer großen Pfanne oder einem Wok das Öl stark erhitzen. Das Hähnchen darin von allen Seiten ca. 5 Minuten goldbraun und durchbraten.",
+            "Die Brokkoliröschen und den Ingwer hinzufügen und für weitere 3-4 Minuten mitbraten, bis der Brokkoli bissfest ist.",
+            "Den gekochten Reis unterheben, mit Sojasauce ablöschen und alles gut vermengen. Mit Frühlingszwiebeln garniert servieren."
+          ]
         },
         { 
           name: "Pasta Bolognese", 
           calories: 750, 
           time: "30 Min", 
-          ingredients: ["100g Rinderhack", "100g Vollkornpasta", "200ml Tomatensauce", "1 EL Parmesan", "Zwiebel, Knoblauch"],
-          instructions: ["Pasta kochen.", "Hackfleisch mit Zwiebeln und Knoblauch anbraten.", "Tomatensauce hinzufügen und 10 Min. köcheln lassen.", "Mit Parmesan servieren."]
+          imageUrl: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["100g Rinderhack", "100g Vollkornpasta", "200ml Tomatensauce", "1 EL Parmesan", "1 kleine Zwiebel", "1 Knoblauchzehe", "Getrockneter Oregano"],
+          instructions: [
+            "Einen großen Topf mit Salzwasser zum Kochen bringen und die Pasta darin nach Packungsanweisung al dente garen.",
+            "Zwiebel und Knoblauch fein würfeln. In einer Pfanne etwas Öl erhitzen und das Rinderhackfleisch darin krümelig anbraten.",
+            "Zwiebeln und Knoblauch hinzugeben und glasig dünsten. Mit Oregano, Salz und Pfeffer würzen.",
+            "Die Tomatensauce hinzugeben, die Hitze reduzieren und alles bei geschlossenem Deckel ca. 10-15 Minuten köcheln lassen, damit sich die Aromen entfalten.",
+            "Die Pasta abgießen und direkt mit der Sauce mischen oder die Sauce über die Pasta geben. Mit frisch geriebenem Parmesan bestreuen."
+          ]
         },
       ],
       Vegetarisch: [
@@ -81,15 +97,29 @@ const Plan = () => {
           name: "Linsencurry", 
           calories: 600, 
           time: "30 Min", 
-          ingredients: ["80g rote Linsen", "100ml Kokosmilch", "60g Reis", "Eine Handvoll Spinat", "Currygewürz"],
-          instructions: ["Linsen und Reis separat kochen.", "Linsen mit Kokosmilch und Gewürzen erhitzen.", "Zum Schluss Spinat unterrühren, bis er zusammenfällt."]
+          imageUrl: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["80g rote Linsen", "100ml Kokosmilch", "60g Reis", "Eine Handvoll Spinat", "1 TL Currypulver", "1/2 Zwiebel", "Prise Kurkuma"],
+          instructions: [
+            "Den Reis nach Packungsanweisung kochen. Die roten Linsen in einem Sieb waschen.",
+            "Die Zwiebel fein würfeln und in einem Topf mit etwas Öl dünsten. Currypulver und Kurkuma kurz mitrösten, bis es duftet.",
+            "Die Linsen hinzufügen und mit der Kokosmilch sowie etwa 100ml Wasser ablöschen.",
+            "Bei mittlerer Hitze ca. 15-20 Minuten köcheln lassen, bis die Linsen weich sind und die Flüssigkeit sämig geworden ist.",
+            "Zum Schluss den frischen Spinat unterrühren und zusammenfallen lassen. Mit Salz und Pfeffer abschmecken und auf dem Reis servieren."
+          ]
         },
         { 
           name: "Kichererbsen-Salat", 
           calories: 500, 
           time: "15 Min", 
-          ingredients: ["1 Dose Kichererbsen (abgespült)", "1/2 Gurke", "50g Feta", "1 EL Olivenöl", "Zitrone"],
-          instructions: ["Gurke würfeln.", "Kichererbsen, Gurke und zerbröselten Feta mischen.", "Dressing aus Öl und Zitrone darübergeben."]
+          imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["1 Dose Kichererbsen (240g Abtropfgewicht)", "1/2 Gurke", "50g Feta", "1 EL Olivenöl", "Saft einer halben Zitrone", "Frische Petersilie"],
+          instructions: [
+            "Die Kichererbsen in ein Sieb geben, gründlich mit kaltem Wasser abspülen und gut abtropfen lassen.",
+            "Die Gurke waschen und in kleine Würfel schneiden. Die Petersilie fein hacken.",
+            "In einer Schüssel Kichererbsen, Gurkenwürfel und die gehackte Petersilie vermengen.",
+            "Den Feta mit den Händen grob über den Salat bröseln.",
+            "Für das Dressing Olivenöl und Zitronensaft verrühren, über den Salat geben und alles vorsichtig vermischen. Mit Salz und Pfeffer abschmecken."
+          ]
         },
       ],
       Vegan: [
@@ -97,8 +127,16 @@ const Plan = () => {
           name: "Tofu Stir-fry", 
           calories: 550, 
           time: "20 Min", 
-          ingredients: ["150g Tofu (fest)", "1 Paprika", "100g Reisnudeln", "2 EL Erdnusssauce"],
-          instructions: ["Reisnudeln mit heißem Wasser übergießen.", "Tofu würfeln und kross anbraten.", "Paprika dazugeben und kurz mitbraten.", "Mit Erdnusssauce und Nudeln vermischen."]
+          imageUrl: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["150g Tofu (natur oder geräuchert)", "1 rote Paprika", "100g Reisnudeln", "2 EL Erdnusssauce", "Sesamsamen", "1 Frühlingszwiebel"],
+          instructions: [
+            "Reisnudeln in eine Schüssel geben, mit kochendem Wasser übergießen und ca. 5-8 Minuten ziehen lassen (siehe Packungsanweisung), dann abgießen.",
+            "Den Tofu in Würfel schneiden und mit Küchenpapier trocken pressen, damit er beim Braten knusprig wird.",
+            "Paprika entkernen und in Streifen schneiden. Frühlingszwiebel in Ringe schneiden.",
+            "In einer Pfanne Öl erhitzen und den Tofu ca. 5-7 Minuten rundherum scharf anbraten, bis er goldbraun ist.",
+            "Die Paprika hinzufügen und 3-4 Minuten mitgaren, bis sie noch leicht bissfest ist.",
+            "Die Erdnusssauce und die abgetropften Nudeln in die Pfanne geben, alles gut vermengen und kurz erwärmen. Mit Sesamsamen bestreut servieren."
+          ]
         },
       ],
       "High Protein": [
@@ -106,8 +144,15 @@ const Plan = () => {
           name: "Putensteak mit Quark", 
           calories: 600, 
           time: "20 Min", 
-          ingredients: ["200g Putensteak", "150g Magerquark", "Gemischtes Pfannengemüse", "Kräuter"],
-          instructions: ["Pute von beiden Seiten ca. 4 Min. braten.", "Quark mit Kräutern glatt rühren.", "Gemüse in der gleichen Pfanne dünsten."]
+          imageUrl: "https://images.unsplash.com/photo-1632778149975-420e0e75ee08?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["200g Putensteak", "150g Magerquark", "250g gemischtes Pfannengemüse", "Frische Kräuter (Schnittlauch/Dill)", "1 TL Paprikapulver edelsüß"],
+          instructions: [
+            "Das Putensteak trocken tupfen und von beiden Seiten mit Salz, Pfeffer und Paprikapulver würzen.",
+            "In einer beschichteten Pfanne etwas Öl erhitzen und das Steak bei mittlerer Hitze ca. 4-5 Minuten pro Seite braten, bis es gar ist.",
+            "In der Zwischenzeit den Magerquark mit einem Schuss Sprudelwasser oder Milch glatt rühren und die gehackten Kräuter unterheben.",
+            "Das Steak aus der Pfanne nehmen und warm stellen. Das Gemüse in der gleichen Pfanne für ca. 6-8 Minuten dünsten, bis es gar, aber noch knackig ist.",
+            "Alles zusammen auf einem Teller anrichten und den Kräuterquark als Dip zum Fleisch servieren."
+          ]
         },
       ],
       "Low Carb": [
@@ -115,8 +160,15 @@ const Plan = () => {
           name: "Zucchini-Nudeln mit Pesto", 
           calories: 400, 
           time: "15 Min", 
-          ingredients: ["2 große Zucchini", "2 EL Basilikumpesto", "10g Pinienkerne", "Parmesan (optional)"],
-          instructions: ["Zucchini mit Spiralschneider zu Nudeln verarbeiten.", "In der Pfanne 2-3 Min. andünsten.", "Mit Pesto und Pinienkernen vermengen."]
+          imageUrl: "https://images.unsplash.com/photo-1645112481338-3561ec819bc7?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["2 große Zucchini", "2 EL Basilikumpesto", "10g Pinienkerne", "Kirschtomaten", "Parmesan"],
+          instructions: [
+            "Die Zucchini waschen und die Enden abschneiden. Mit einem Spiralschneider zu langen 'Zoodles' (Zucchini-Nudeln) verarbeiten.",
+            "Pinienkerne in einer Pfanne ohne Fett goldbraun rösten, dann herausnehmen.",
+            "Die Kirschtomaten halbieren. Etwas Öl in der Pfanne erhitzen und die Zoodles darin für nur 2-3 Minuten andünsten (nicht zu lange, sonst werden sie wässrig).",
+            "Die Tomaten hinzufügen und kurz mitwärmen.",
+            "Die Pfanne vom Herd nehmen, das Pesto unter die Zoodles mischen und mit Pinienkernen sowie gehobeltem Parmesan bestreuen."
+          ]
         },
       ]
     };
@@ -131,21 +183,34 @@ const Plan = () => {
           name: "Haferflocken mit Beeren", 
           calories: Math.round(data.calories * 0.25), 
           time: "10 Min", 
-          ingredients: ["50g Haferflocken", "100g TK-Beeren", "150ml Milch oder Pflanzendrink", "1 TL Honig"],
-          instructions: ["Haferflocken mit Milch aufkochen oder einweichen.", "Beeren und Honig unterrühren."]
+          imageUrl: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["50g Haferflocken", "100g TK-Beeren", "150ml Milch oder Haferdrink", "1 TL Honig oder Ahornsirup", "Eine Prise Zimt"],
+          instructions: [
+            "Die Haferflocken zusammen mit der Milch in einen kleinen Topf geben.",
+            "Unter Rühren aufkochen lassen, dann die Hitze reduzieren und ca. 2-3 Minuten köcheln lassen, bis eine cremige Konsistenz entsteht.",
+            "Die gefrorenen oder frischen Beeren hinzufügen und kurz mitwärmen oder unterrühren.",
+            "Mit Honig und Zimt abschmecken und in einer Schüssel anrichten."
+          ]
         },
         { 
           type: "Mittagessen", 
           ...selectedPool[Math.floor(Math.random() * selectedPool.length)],
-          type: "Mittagessen" // Ensure type is correct
+          type: "Mittagessen"
         },
         { 
           type: "Abendessen", 
           name: "Protein-Salat-Bowl", 
           calories: Math.round(data.calories * 0.35), 
           time: "15 Min", 
-          ingredients: ["100g Mix-Salat", "1 Dose Thunfisch (im eigenen Saft) oder Kichererbsen", "1/2 Avocado", "Leichtes Dressing"],
-          instructions: ["Salat waschen.", "Thunfisch/Kichererbsen abtropfen lassen.", "Avocado aufschneiden und alles in einer Bowl anrichten."]
+          imageUrl: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["100g Mix-Salat", "1 Dose Thunfisch (im eigenen Saft) oder 150g Kichererbsen", "1/2 Avocado", "5 Kirschtomaten", "Leichtes Joghurt-Dressing"],
+          instructions: [
+            "Den Mix-Salat gründlich waschen und trocken schleudern.",
+            "Die Avocado halbieren, den Kern entfernen und das Fruchtfleisch in Scheiben schneiden. Tomaten halbieren.",
+            "Thunfisch oder Kichererbsen in einem Sieb abtropfen lassen.",
+            "Alle Zutaten nebeneinander in einer großen Bowl anrichten, um die Optik zu bewahren.",
+            "Mit dem Dressing beträufeln und sofort genießen."
+          ]
         }
       ].map(m => ({ ...m, type: m.type })) as Meal[]
     }));
@@ -259,7 +324,7 @@ const Plan = () => {
                       <AccordionItem 
                         key={i} 
                         value={`item-${i}`}
-                        className="bg-white px-6 md:px-8 py-2 rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-xl hover:shadow-primary/5 transition-all"
+                        className="bg-white px-6 md:px-8 py-2 rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-xl hover:shadow-primary/5 transition-all overflow-hidden"
                       >
                         <AccordionTrigger className="hover:no-underline py-6">
                           <div className="flex flex-col md:flex-row gap-6 items-start md:items-center w-full text-left">
@@ -284,32 +349,48 @@ const Plan = () => {
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="pb-8 pt-4 border-t border-slate-50">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                              <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                <ListChecks className="w-4 h-4 text-primary" /> Zutaten (1 Person)
-                              </h4>
-                              <ul className="space-y-2">
-                                {meal.ingredients.map((ing, j) => (
-                                  <li key={j} className="flex items-center gap-3 text-slate-600 font-medium text-sm">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-primary/40"></div>
-                                    {ing}
-                                  </li>
-                                ))}
-                              </ul>
+                          <div className="space-y-8">
+                            {/* Hero Image for Recipe */}
+                            <div className="relative w-full h-48 sm:h-64 rounded-[2rem] overflow-hidden shadow-inner">
+                              <img 
+                                src={meal.imageUrl} 
+                                alt={meal.name} 
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
+                                <span className="text-white font-black text-2xl drop-shadow-md">{meal.name}</span>
+                              </div>
                             </div>
-                            <div>
-                              <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                <ChefHat className="w-4 h-4 text-primary" /> Zubereitung
-                              </h4>
-                              <ol className="space-y-4">
-                                {meal.instructions.map((step, j) => (
-                                  <li key={j} className="flex gap-3 text-slate-600 text-sm leading-relaxed">
-                                    <span className="font-black text-primary/40 shrink-0">{j + 1}.</span>
-                                    {step}
-                                  </li>
-                                ))}
-                              </ol>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                              <div>
+                                <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                  <ListChecks className="w-4 h-4 text-primary" /> Zutaten (1 Person)
+                                </h4>
+                                <ul className="space-y-2">
+                                  {meal.ingredients.map((ing, j) => (
+                                    <li key={j} className="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                      <div className="w-1.5 h-1.5 rounded-full bg-primary/40"></div>
+                                      {ing}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div>
+                                <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                  <ChefHat className="w-4 h-4 text-primary" /> Zubereitung
+                                </h4>
+                                <ol className="space-y-4">
+                                  {meal.instructions.map((step, j) => (
+                                    <li key={j} className="flex gap-4 text-slate-600 text-sm leading-relaxed">
+                                      <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black text-[10px] shrink-0">
+                                        {j + 1}
+                                      </span>
+                                      {step}
+                                    </li>
+                                  ))}
+                                </ol>
+                              </div>
                             </div>
                           </div>
                         </AccordionContent>
