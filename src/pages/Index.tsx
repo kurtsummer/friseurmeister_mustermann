@@ -7,6 +7,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ProcessSection } from "@/components/ProcessSection";
+import { FinalCTA } from "@/components/FinalCTA";
 import { Sparkles, Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -67,6 +68,7 @@ const Index = () => {
         <BenefitsSection />
         <AboutSection />
         <ProcessSection />
+        <FinalCTA />
       </main>
 
       {/* Footer */}
