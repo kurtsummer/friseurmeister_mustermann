@@ -9,8 +9,8 @@ export const About = () => {
             <div className="space-y-4 pt-12">
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=2070&auto=format&fit=crop"
-                  alt="Innenansicht des modernen Salons in Musterhausen"
+                  src="/about-image-1.png"
+                  alt="Portrait einer Frau mit modernem Long Bob Styling aus unserem Salon"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
