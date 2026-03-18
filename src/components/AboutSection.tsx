@@ -8,12 +8,11 @@ export const AboutSection = () => {
           {/* Image/Visual Side */}
           <div className="flex-1 relative">
             <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-200/50 aspect-[4/5] max-w-md mx-auto lg:mx-0">
-              <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" 
-                alt="Professional Business Portrait" 
-                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
+              <img
+                src="/kurt.png"
+                alt="Kurt - KI-Marketing Experte"
+                className="w-full h-full object-cover transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1F2A44]/40 to-transparent"></div>
             </div>
             
             {/* Decorative Elements */}
